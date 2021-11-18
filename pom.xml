@@ -47,36 +47,11 @@
     <!-- IMPORTANT - Test dependencies need to be here in the top parent POM as
                      the Alfresco Maven IT Mojo runs as part of the parent project ... -->
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <!-- The main Alfresco Repo dependency for compiling Java code in src/main/java -->
         <dependency>
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-remote-api</artifactId>
             <scope>provided</scope>
-        </dependency>
-
-        <!-- Bring in Alfresco RAD so we get access to AlfrescoTestRunner classes -->
-        <dependency>
-            <groupId>org.alfresco.maven</groupId>
-            <artifactId>alfresco-rad</artifactId>
-            <version>${alfresco.sdk.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -365,49 +340,17 @@
                     <alwaysGenerate>true</alwaysGenerate>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>java8</id>
-            <activation>
-                <jdk>[1.8,11.0)</jdk>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.0</version>
-                        <configuration>
-                            <source>1.8</source>
-                            <target>1.8</target>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>java11</id>
-            <activation>
-                <jdk>[11.0,)</jdk>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.0</version>
-                        <configuration>
-                            <release>11</release>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <!--
         Alfresco Maven Repositories
         -->
@@ -445,9 +388,10 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-<modules>  <module>edf-demo-dev-alfresco-platform</module>
+
+  <modules>  
+	<module>edf-demo-dev-alfresco-platform</module>
     <module>edf-demo-dev-alfresco-share</module>
-    <module>edf-demo-dev-alfresco-integration-tests</module>
     <module>edf-demo-dev-alfresco-platform-docker</module>
     <module>edf-demo-dev-alfresco-share-docker</module>
   </modules>
