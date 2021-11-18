@@ -10,5 +10,50 @@
              alfresco/tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml
      -->
 <alfresco-config>
+
+	<!-- 
+		Configuration Share 
+	-->
+	
+	<config evaluator="string-compare" condition="DocumentLibrary">
+		<aspects>
+			<!-- Permet de définir les aspects que l'on peut ajouter / retirer depuis 
+				l'interface Share -->
+			<visible>
+				<aspect name="edf:documentComptable" />
+			</visible>
+			<addable> <!-- defaults to visible config -->
+			</addable>
+			<removeable> <!-- defaults to visible config -->
+			</removeable>
+		</aspects>
+		<types>
+			<!-- Permet de définir les transitions de type possible depuis l'interface Share -->
+		</types>
+	</config>
+
+	<!-- 
+		Formulaires 
+	-->
+
+	<!-- Aspect edf:documentComptable -->
+	<config evaluator="aspect" condition="edf:documentComptable">
+		<forms>
+			<form>
+				<field-visibility>
+					<!-- Champs visibles si l'aspect est présent, dans l'ordre où l'on souhaite les afficher -->
+					<show id="edf:documentComptableID" />
+					<show id="edf:documentComptableDateFacturation" />
+				</field-visibility>
+				<!-- Optionnel, paramètres d'affichage supplémentaires -->
+				<appearance>
+					<!-- On regroupe les champs dans un panel pour un affichage plus joli -->
+					<set id="edfDocumentComptableSet" appearance="panel" label-id="form.set.edf_documentComptable" />
+					<field id="edf:documentComptableID" set="edfDocumentComptableSet" />
+					<field id="edf:documentComptableDateFacturation" set="edfDocumentComptableSet" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
    
 </alfresco-config>
