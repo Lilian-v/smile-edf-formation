@@ -13,13 +13,80 @@
         <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
         <!-- Import Alfresco System Model Definitions -->
         <import uri="http://www.alfresco.org/model/system/1.0" prefix="sys"/>
+        <!-- Import Alfresco Datalist model -->
+		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
     </imports>
 
     <!-- Custom namespaces -->
     <namespaces>
         <namespace uri="http://www.edf.fr/model/content/1.0" prefix="edf"/>
     </namespaces>
+    
+    
+    <!-- Contraintes -->
+    <constraints>
+		<constraint name="edf:datalistClientExterneSecteurActiviteConstraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>Nucléaire</value>
+					<value>Gaz</value>
+					<value>Eolien</value>
+					<value>Administratif</value>
+					<value>Autre</value>
+				</list>
+			</parameter>
+		</constraint>
+	</constraints>
+	
 
+    <!-- Types -->
+	<types>
+		<type name="edf:datalistClientExterne">
+			<title>Clients externes EDF</title>
+			<description>Métadonnées pour le référentiel client</description>
+			<parent>dl:dataListItem</parent>
+			<properties>
+				<property name="edf:datalistClientExterneNomClient">
+					<title>Nom client</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<index enabled="true">
+                        <tokenised>both</tokenised>
+                    </index>
+				</property>
+				<property name="edf:datalistClientExternePrenomClient">
+					<title>Prénom client</title>
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+					<index enabled="true">
+                        <tokenised>both</tokenised>
+                    </index>
+				</property>
+				<property name="edf:datalistClientExterneAnneeAdhesion">
+					<title>Année d'adhésion</title>
+					<type>d:int</type>
+				</property>
+				<property name="edf:datalistClientExterneSecteurActivite">
+					<title>Secteur d'activité</title>
+					<type>d:text</type>
+					<index enabled="true">
+						<tokenised>false</tokenised>
+					</index>
+					<constraints>
+						<constraint ref="edf:datalistClientExterneSecteurActiviteConstraint" />
+					</constraints>
+				</property>
+				<property name="edf:datalistClientExterneEstActif">
+					<title>Actif ?</title>
+					<type>d:boolean</type>
+					<default>true</default>
+				</property>
+			</properties>
+		</type>
+	</types>
+	
+	    
+	<!-- Aspects -->
     <aspects>
         <aspect name="edf:documentComptable">
             <title>Document comptable</title>
