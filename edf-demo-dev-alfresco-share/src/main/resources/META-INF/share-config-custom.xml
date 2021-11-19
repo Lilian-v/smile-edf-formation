@@ -94,5 +94,33 @@
 			</form>
 		</forms>
 	</config>
+	
+	<!-- Recherche avancée EDF -->
+   <config evaluator="string-compare" condition="AdvancedSearch">
+		<advanced-search>
+			<forms>
+				<form id="edf_document_advanced_search" labelId="form.advancedSearch.edf.label" descriptionId="form.advancedSearch.edf.description">cm:content</form>
+			</forms>
+		</advanced-search>
+	</config> 
+	<config evaluator="model-type" condition="cm:content">
+		<forms>
+			<form id="edf_document_advanced_search">
+				<field-visibility>
+					<show id="edf:documentComptableID" force="true"/>
+					<show id="edf:documentComptableDateFacturation" force="true"/>
+					<show id="cm:name" force="true"/>
+					<show id="cm:title" force="true"/>
+					<show id="cm:description" force="true"/>
+				</field-visibility>
+				<appearance>
+					<!-- On veut choisir une plage de date, et non une date exacte -->
+					<field id="edf:documentComptableDateFacturation">
+						<control template="/org/alfresco/components/form/controls/daterange.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
    
 </alfresco-config>
