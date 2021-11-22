@@ -4,8 +4,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
+	<!-- Permet d'utiliser un bean Java dans tout le JavaScript coté serveur Alfresco -->
 	<bean id="edf.javascriptProcessor.runAs" parent="baseJavaScriptExtension" class="fr.edf.javascript.processors.EdfRunAs">
 		<property name="extensionName" value="EdfRunAs" />
+	</bean>
+	
+	<!-- Surcharge liste des facettes de type Date pour afficher une plage de dates -->
+	<bean id="facet.dateFacetFields" class="org.springframework.beans.factory.config.SetFactoryBean">
+		<property name="sourceSet">
+			<set>
+				<value>@{http://www.alfresco.org/model/content/1.0}created</value>
+				<value>@{http://www.alfresco.org/model/content/1.0}modified</value>
+				<value>@{http://www.edf.fr/model/content/1.0}documentComptableDateFacturation</value>
+			</set>
+		</property>
 	</bean>
 
 </beans>
