@@ -48,7 +48,7 @@ build_share() {
 build_acs() {
     docker-compose -f "$COMPOSE_FILE_PATH" kill edf-demo-dev-alfresco-acs
     yes | docker-compose -f "$COMPOSE_FILE_PATH" rm -f edf-demo-dev-alfresco-acs
-    $MVN_EXEC clean package -pl edf-demo-dev-alfresco-integration-tests,edf-demo-dev-alfresco-platform,edf-demo-dev-alfresco-platform-docker
+    $MVN_EXEC clean package -pl edf-demo-dev-alfresco-platform,edf-demo-dev-alfresco-platform-docker
 }
 
 tail() {
@@ -59,25 +59,10 @@ tail_all() {
     docker-compose -f "$COMPOSE_FILE_PATH" logs --tail="all"
 }
 
-prepare_test() {
-    $MVN_EXEC verify -DskipTests=true -pl edf-demo-dev-alfresco-platform,edf-demo-dev-alfresco-integration-tests,edf-demo-dev-alfresco-platform-docker
-}
-
-test() {
-    $MVN_EXEC verify -pl edf-demo-dev-alfresco-platform,edf-demo-dev-alfresco-integration-tests
-}
-
 case "$1" in
   build_start)
     down
     build
-    start
-    tail
-    ;;
-  build_start_it_supported)
-    down
-    build
-    prepare_test
     start
     tail
     ;;
@@ -105,18 +90,6 @@ case "$1" in
     start_acs
     tail
     ;;
-  build_test)
-    down
-    build
-    prepare_test
-    start
-    test
-    tail_all
-    down
-    ;;
-  test)
-    test
-    ;;
   *)
-    echo "Usage: $0 {build_start|build_start_it_supported|start|stop|purge|tail|reload_share|reload_acs|build_test|test}"
+    echo "Usage: $0 {build_start|build_start_it_supported|start|stop|purge|tail|reload_share|reload_acs}"
 esac
