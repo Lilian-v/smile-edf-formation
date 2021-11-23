@@ -1,0 +1,6 @@
+<webscript>
+	<shortname>accueil-component</shortname>
+	<description>Renvoie la région Accueil de la page EdfHome</description>
+	<!-- Doit être identique au chemin du composant -->
+	<url>/fr/edf/pages/edfhome/accueil-component</url>
+</webscript>

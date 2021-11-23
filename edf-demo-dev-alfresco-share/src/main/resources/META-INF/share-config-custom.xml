@@ -31,7 +31,16 @@
 			<!-- Permet de définir les transitions de type possible depuis l'interface Share -->
 		</types>
 	</config>
-
+	
+	<!-- Nouvelles pages -->
+	<config evaluator="string-compare" condition="SitePages">
+		<pages>
+			<!-- Nom de la page dans web-extension/site-data/pages -->
+			<page id="edfhome">edfhome</page>
+		</pages>
+	</config>
+	
+	
 	<!-- 
 		Formulaires 
 	-->

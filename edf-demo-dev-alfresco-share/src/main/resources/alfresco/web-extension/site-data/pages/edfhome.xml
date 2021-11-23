@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<title>Accueil EDF</title>
+	<description>Page d'accueil EDF</description>
+	<!-- Référence à un template dans web-extension/site-data/template-instances -->
+	<template-instance>edfhome-template</template-instance>
+	<authentication>user</authentication>
+</page>
