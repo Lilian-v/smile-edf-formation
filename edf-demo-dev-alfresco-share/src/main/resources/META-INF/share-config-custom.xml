@@ -32,10 +32,10 @@
 		</types>
 	</config>
 	
-	<!-- Nouvelles pages -->
+	<!-- Nouvelles pages ajoutables sur un site -->
 	<config evaluator="string-compare" condition="SitePages">
 		<pages>
-			<!-- Nom de la page dans web-extension/site-data/pages -->
+			<!-- L'intérieur de la balise doit être le nom de la page dans web-extension/site-data/pages -->
 			<page id="edfhome">edfhome</page>
 		</pages>
 	</config>
