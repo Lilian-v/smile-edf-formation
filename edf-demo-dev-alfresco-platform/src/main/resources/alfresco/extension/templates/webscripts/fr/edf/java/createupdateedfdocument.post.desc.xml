@@ -1,0 +1,9 @@
+<webscript>
+    <shortname>Création / update document EDF</shortname>
+    <description>Ajout ou mise à jour de document, aevc contenu et métadonnées</description>
+    <url>/edf/documentComptable/createOrUpdate</url>
+    <authentication>user</authentication>
+    <format default="html" />
+    <family>EDF</family>
+    <transaction allow="readwrite">required</transaction>
+</webscript>

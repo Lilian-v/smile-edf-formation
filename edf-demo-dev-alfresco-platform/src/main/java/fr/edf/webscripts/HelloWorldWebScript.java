@@ -1,4 +1,4 @@
-package fr.edf;
+package fr.edf.webscripts;
 
 import org.springframework.extensions.webscripts.Cache;
 import org.springframework.extensions.webscripts.DeclarativeWebScript;

@@ -9,5 +9,7 @@
 	
 	<!-- Hello World java -->
 	<bean id="webscript.fr.edf.java.demo.helloworld.get" class="fr.edf.webscripts.HelloWorldWebScript" parent="webscript" />
+	
+	<bean id="webscript.fr.edf.java.createupdateedfdocument.post" class="fr.edf.webscripts.CreateOrUpdateEdfDocument" parent="webscript" />
 
 </beans>
