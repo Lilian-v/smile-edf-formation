@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- Bean exécuté dans le job -->
+    <bean id="fr.edf.job.documentArchivageJobExecuter" class="fr.edf.jobs.EdfDocumentArchivageJobExecuter" />
+
+	<!-- Bean de déclenchement -->
+	<bean id="fr.edf.job.documentArchivageJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<bean id="fr.edf.job.documentArchivageJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+				<property name="jobClass" value="fr.edf.jobs.EdfDocumentArchivageJob" />
+				<property name="jobDataAsMap">
+					<map>
+						<entry key="jobExecuter" value-ref="fr.edf.job.documentArchivageJobExecuter" />
+						<entry key="jobLockService" value-ref="jobLockService" />
+					</map>
+				</property>
+			</bean>
+		</property>
+		<property name="cronExpression" value="${edf.job.documentArchivage.cronExpression}" />
+		<property name="startDelay" value="60000" />
+	</bean>
+	
+	<!-- Listing de tous les jobs custom pour déclenchement depuis l'interface -->
+	<bean id="fr.edf.job.schedulerAccessor" class="org.alfresco.schedule.AlfrescoSchedulerAccessorBean">
+		<property name="scheduler" ref="schedulerFactory"/>
+		<property name="triggers">
+			<list>
+				<ref bean="fr.edf.job.documentArchivageJobTrigger"/>
+			</list>
+		</property>
+		<property name="enabled" value="true" />
+	</bean>
+    
+</beans>

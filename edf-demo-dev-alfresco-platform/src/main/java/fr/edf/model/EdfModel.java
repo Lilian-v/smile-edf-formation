@@ -8,5 +8,7 @@ public interface EdfModel {
 	public static final QName ASPECT_DOCUMENT_COMPTABLE = QName.createQName(EDF_URI, "documentComptable");
 	public static final QName PROP_DOCUMENT_COMPTABLE_ID = QName.createQName(EDF_URI, "documentComptableID");
 	public static final QName PROP_DOCUMENT_COMPTABLE_DATE_FACTURATION = QName.createQName(EDF_URI, "documentComptableDateFacturation");
+	
+	public static final QName ASPECT_DOCUMENT_ARCHIVE = QName.createQName(EDF_URI, "documentArchive");
 
 }

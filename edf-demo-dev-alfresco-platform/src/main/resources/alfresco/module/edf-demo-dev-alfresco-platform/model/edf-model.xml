@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model name="edf:contentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
 
-    <!-- Optional meta-data about the model -->
-    <description>Modèle de données EDF</description>
-    <author>Smile</author>
-    <version>1.0</version>
+	<!-- Optional meta-data about the model -->
+	<description>Modèle de données EDF</description>
+	<author>Smile</author>
+	<version>1.0</version>
 
-    <imports>
-        <!-- Import Alfresco Dictionary Definitions -->
-        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
-        <!-- Import Alfresco Content Domain Model Definitions -->
-        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
-        <!-- Import Alfresco System Model Definitions -->
-        <import uri="http://www.alfresco.org/model/system/1.0" prefix="sys"/>
-        <!-- Import Alfresco Datalist model -->
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<!-- Import Alfresco System Model Definitions -->
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+		<!-- Import Alfresco Datalist model -->
 		<import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
-    </imports>
+	</imports>
 
-    <!-- Custom namespaces -->
-    <namespaces>
-        <namespace uri="http://www.edf.fr/model/content/1.0" prefix="edf"/>
-    </namespaces>
-    
-    
-    <!-- Contraintes -->
-    <constraints>
+	<!-- Custom namespaces -->
+	<namespaces>
+		<namespace uri="http://www.edf.fr/model/content/1.0" prefix="edf" />
+	</namespaces>
+
+
+	<!-- Contraintes -->
+	<constraints>
 		<constraint name="edf:datalistClientExterneSecteurActiviteConstraint" type="LIST">
 			<parameter name="allowedValues">
 				<list>
@@ -39,7 +39,7 @@
 	</constraints>
 	
 
-    <!-- Types -->
+	<!-- Types -->
 	<types>
 		<type name="edf:datalistClientExterne">
 			<title>Clients externes EDF</title>
@@ -51,16 +51,16 @@
 					<type>d:text</type>
 					<mandatory>true</mandatory>
 					<index enabled="true">
-                        <tokenised>both</tokenised>
-                    </index>
+						<tokenised>both</tokenised>
+					</index>
 				</property>
 				<property name="edf:datalistClientExternePrenomClient">
 					<title>Prénom client</title>
 					<type>d:text</type>
 					<mandatory>true</mandatory>
-					<index enabled="true">
-                        <tokenised>both</tokenised>
-                    </index>
+				<index enabled="true">
+					<tokenised>both</tokenised>
+				</index>
 				</property>
 				<property name="edf:datalistClientExterneAnneeAdhesion">
 					<title>Année d'adhésion</title>
@@ -84,33 +84,33 @@
 			</properties>
 		</type>
 	</types>
-	
-	    
+
+
 	<!-- Aspects -->
-    <aspects>
-        <aspect name="edf:documentComptable">
-            <title>Document comptable</title>
-            <description>Document comptable EDF</description>
-            <properties>
-                <property name="edf:documentComptableID">
-                	<title>ID du document</title>
-                    <type>d:text</type>
-                    <index enabled="true">
-                    	<!-- On ne veut que de la recherche exacte sur un ID, tokenised à false -->
-                        <tokenised>false</tokenised>
-                    </index>
-                </property>
-                
-                <property name="edf:documentComptableDateFacturation">
-                	<title>Date de facturation</title>
-                    <type>d:date</type>
-                </property>
-            </properties>
-        </aspect>
-        
-        <aspect name="edf:approvedDocument">
-            <title>Document approuvé</title>
-            <description>Document approuvé suite à un workflow</description>
+	<aspects>
+		<aspect name="edf:documentComptable">
+			<title>Document comptable</title>
+			<description>Document comptable EDF</description>
+			<properties>
+				<property name="edf:documentComptableID">
+					<title>ID du document</title>
+					<type>d:text</type>
+					<index enabled="true">
+						<!-- On ne veut que de la recherche exacte sur un ID, tokenised à false -->
+						<tokenised>false</tokenised>
+					</index>
+				</property>
+
+				<property name="edf:documentComptableDateFacturation">
+					<title>Date de facturation</title>
+					<type>d:date</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="edf:approvedDocument">
+			<title>Document approuvé</title>
+			<description>Document approuvé suite à un workflow</description>
 			<properties>
 				<property name="edf:approvedDocumentDateApprobation">
 					<title>Date d'approbation</title>
@@ -156,6 +156,11 @@
 				</association>
 			</associations>
 		</aspect>
-    </aspects>
+
+		<aspect name="edf:documentArchive">
+			<title>Document archivé</title>
+			<description>Document archivé</description>
+		</aspect>
+	</aspects>
 
 </model>
