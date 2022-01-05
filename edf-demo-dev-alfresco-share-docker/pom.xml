@@ -38,6 +38,18 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>de.fmaul</groupId>
+			<artifactId>javascript-console-share</artifactId>
+			<version>0.6</version>
+			<type>amp</type>
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
     <build>
